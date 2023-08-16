@@ -47,4 +47,10 @@ class StringSolution {
         }
         return sb.toString()
     }
+
+}
+
+fun main() {
+    val solution = StringSolution()
+    solution.replaceSpace("hello world")
 }
