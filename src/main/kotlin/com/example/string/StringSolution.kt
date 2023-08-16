@@ -48,7 +48,25 @@ class StringSolution {
         }
         return sb.toString()
     }
+    fun reverseWords(s: String): String {
+        val stringList = s.trim().split("\\s+".toRegex())
+        val words = mutableListOf<String>()
+        stringList.forEach {
+            words.add(0, it)
+        }
+        return words.joinToString(" ")
+    }
 
+    fun reverseWords2(s: String): String {
+        val words = mutableListOf<String>()
+        s.reversed().split(" ")
+            .forEach { word ->
+                if (word.isNotBlank()) {
+                    words.add(word.reversed())
+                }
+            }
+        return words.joinToString(" ")
+    }
 }
 
 fun main() {
