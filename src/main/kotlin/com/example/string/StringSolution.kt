@@ -4,7 +4,6 @@ import kotlin.math.min
 
 
 import java.lang.StringBuilder
-import kotlin.math.min
 
 class StringSolution {
 
@@ -50,6 +49,7 @@ class StringSolution {
         }
         return sb.toString()
     }
+
     fun reverseWords(s: String): String {
         val stringList = s.trim().split("\\s+".toRegex())
         val words = mutableListOf<String>()
@@ -68,6 +68,26 @@ class StringSolution {
                 }
             }
         return words.joinToString(" ")
+    }
+
+    fun reverseLeftWords(s: String, n: Int): String {
+        val sb = StringBuilder(s)
+        sb.reverse(0, n-1)
+        sb.reverse(n, sb.length-1)
+        sb.reverse(0, sb.length-1)
+        return sb.toString()
+    }
+
+    private fun StringBuilder.reverse(left: Int, right: Int) {
+        var start = left
+        var end = right
+        while (start < end) {
+            val temp = this[start]
+            this[start] = this[end]
+            this[end] = temp
+            start++
+            end--
+        }
     }
 }
 
