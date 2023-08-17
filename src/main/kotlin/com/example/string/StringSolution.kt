@@ -72,9 +72,9 @@ class StringSolution {
 
     fun reverseLeftWords(s: String, n: Int): String {
         val sb = StringBuilder(s)
-        sb.reverse(0, n-1)
-        sb.reverse(n, sb.length-1)
-        sb.reverse(0, sb.length-1)
+        sb.reverse(0, n - 1)
+        sb.reverse(n, sb.length - 1)
+        sb.reverse(0, sb.length - 1)
         return sb.toString()
     }
 
@@ -88,6 +88,19 @@ class StringSolution {
             start++
             end--
         }
+    }
+
+    fun reverseLeftWords2(s: String, n: Int): String {
+        val len = s.length
+        val sb = StringBuilder()
+        s.forEachIndexed { index, c ->
+            if (index + n < len) {
+                sb.append(s[index + n])
+            } else {
+                sb.append(s[(index + n) % len])
+            }
+        }
+        return sb.toString()
     }
 }
 
