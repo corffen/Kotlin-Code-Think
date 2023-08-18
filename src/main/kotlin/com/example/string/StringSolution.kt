@@ -106,6 +106,41 @@ class StringSolution {
     fun strStr(haystack: String, needle: String): Int {
         return haystack.indexOf(needle)
     }
+
+    private fun getNext(needle: String): IntArray {
+        val next = IntArray(needle.length) { 0 }
+        var j = 0
+        (1 until needle.length).forEach { i ->
+            while (j > 0 && needle[j] != needle[i]) {
+                j = next[j - 1]
+            }
+            if (needle[j] == needle[i]) {
+                j++
+            }
+            next[i] = j
+        }
+        return next
+    }
+
+    fun strStr2(haystack: String, needle: String): Int {
+        if (needle.isEmpty()) {
+            return 0
+        }
+        val next = getNext(needle)
+        var j = 0
+        haystack.forEachIndexed { i, c ->
+            while (j > 0 && needle[j] != c) {
+                j = next[j - 1]
+            }
+            if (needle[j] == c) {
+                j++
+            }
+            if (j == needle.length) {
+                return i - j + 1
+            }
+        }
+        return -1
+    }
 }
 
 fun main() {
