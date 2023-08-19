@@ -139,6 +139,11 @@ class StringSolution {
         }
         return -1
     }
+
+    fun repeatedSubstringPattern(s: String): Boolean {
+        val indexOf = (s + s).indexOf(s, 1)
+        return indexOf != -1 && indexOf == s.length
+    }
 }
 
 fun main() {
