@@ -59,4 +59,20 @@ class TwoPoint {
         }
         return pre
     }
+
+    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
+        var fast: ListNode? = head
+        var slow: ListNode? = ListNode(0).apply { next = head }
+        var k = n
+        while (k > 0 && fast != null) {
+            fast = fast.next
+            k--
+        }
+        while (fast != null) {
+            fast = fast.next
+            slow = slow!!.next
+        }
+        slow!!.next = slow.next!!.next
+        return slow
+    }
 }
