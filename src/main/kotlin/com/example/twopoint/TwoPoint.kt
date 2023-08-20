@@ -1,5 +1,7 @@
 package com.example.twopoint
 
+import com.example.ListNode
+
 class TwoPoint {
     /**
      * 原地移除[nums]中所有值为[value]
@@ -38,11 +40,23 @@ class TwoPoint {
             return
         }
         var r = s.lastIndex
-        for (index in 0..mid){
+        for (index in 0..mid) {
             val tmp = s[index]
             s[index] = s[r]
             s[r] = tmp
             r--
         }
+    }
+
+    fun reverseList(head: ListNode?): ListNode? {
+        var pre: ListNode? = null
+        var curr = head
+        while (curr != null) {
+            val tmp = curr.next
+            curr.next = pre
+            pre = curr
+            curr = tmp
+        }
+        return pre
     }
 }
