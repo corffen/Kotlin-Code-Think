@@ -35,4 +35,23 @@ class TwoPointSolution {
 
         return tmpB
     }
+
+    fun detectCycle(head: ListNode?): ListNode? {
+        var fast = head
+        var slow = head
+        while (fast?.next != null) {
+            fast = fast.next?.next
+            slow = slow?.next
+            if (fast == slow) {
+                var step1 = fast
+                var step2 = head
+                while (step1 != step2) {
+                    step1 = step1?.next
+                    step2 = step2?.next
+                }
+                return step1
+            }
+        }
+        return null
+    }
 }
