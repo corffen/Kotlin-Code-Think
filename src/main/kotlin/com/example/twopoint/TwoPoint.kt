@@ -15,4 +15,34 @@ class TwoPoint {
         }
         return slow
     }
+
+    fun reverseString(s: CharArray): Unit {
+        s.reverse()
+    }
+
+    fun reverseString2(s: CharArray): Unit {
+        var l = 0
+        var r = s.lastIndex
+        while (l < r) {
+            val tmp = s[l]
+            s[l] = s[r]
+            s[r] = tmp
+            l++
+            r--
+        }
+    }
+
+    fun reverseString3(s: CharArray): Unit {
+        val mid = s.size / 2 - 1
+        if (mid < 0) {
+            return
+        }
+        var r = s.lastIndex
+        for (index in 0..mid){
+            val tmp = s[index]
+            s[index] = s[r]
+            s[r] = tmp
+            r--
+        }
+    }
 }
