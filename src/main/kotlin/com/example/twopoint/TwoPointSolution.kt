@@ -19,11 +19,11 @@ class TwoPointSolution {
         return slow
     }
 
-    fun reverseString(s: CharArray): Unit {
+    fun reverseString(s: CharArray) {
         s.reverse()
     }
 
-    fun reverseString2(s: CharArray): Unit {
+    fun reverseString2(s: CharArray) {
         var l = 0
         var r = s.lastIndex
         while (l < r) {
@@ -35,7 +35,7 @@ class TwoPointSolution {
         }
     }
 
-    fun reverseString3(s: CharArray): Unit {
+    fun reverseString3(s: CharArray) {
         val mid = s.size / 2 - 1
         if (mid < 0) {
             return
@@ -134,20 +134,20 @@ class TwoPointSolution {
         val result = ArrayList<List<Int>>()
         Arrays.sort(nums)
         for (i in 0 until nums.size) {
-            if (nums[i] > 0&&nums[i]>target) {
+            if (nums[i] > 0 && nums[i] > target) {
                 return result
             }
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue
             }
             for (j in i + 1 until nums.size) {
-                if (j > i+1 && nums[j] == nums[j - 1]) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
                     continue
                 }
                 var left = j + 1
                 var right = nums.size - 1
                 while (left < right) {
-                    val sum = nums[left] + nums[right] + nums[i]+nums[j]
+                    val sum = nums[left] + nums[right] + nums[i] + nums[j]
                     if (sum > target) {
                         right--
                     } else if (sum < target) {

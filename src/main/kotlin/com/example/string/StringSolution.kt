@@ -1,13 +1,11 @@
 package com.example.string
 
-import kotlin.math.min
-
-
 import java.lang.StringBuilder
+import kotlin.math.min
 
 class StringSolution {
 
-    fun reverseString(s: CharArray): Unit {
+    fun reverseString(s: CharArray) {
         s.reverse()
     }
 
